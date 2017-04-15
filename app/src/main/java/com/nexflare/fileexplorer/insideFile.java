@@ -21,14 +21,14 @@ public class insideFile extends AppCompatActivity {
     private static final String TAG = "ERR00s";
     public static final String TAGs="NEXTACT";
     String path;
-    RV rvv;
+    RV mRecyclerView;
     ArrayList<String> filearr;
     @Override
     protected void onStart() {
         super.onStart();
         filearr=new ArrayList<>();
         populatefile(path);
-        rvv.notifyDataSetChanged();
+        mRecyclerView.notifyDataSetChanged();
     }
 
     @Override
@@ -36,7 +36,7 @@ public class insideFile extends AppCompatActivity {
         super.onResume();
         filearr=new ArrayList<>();
         populatefile(path);
-        rvv.notifyDataSetChanged();
+        mRecyclerView.notifyDataSetChanged();
     }
 
 
@@ -52,9 +52,9 @@ public class insideFile extends AppCompatActivity {
         Log.d(TAGs, "onCreate: "+path);
         filearr=new ArrayList<>();
         populatefile(path);
-        rvv=new RV();
+        mRecyclerView =new RV();
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(rvv);
+        rv.setAdapter(mRecyclerView);
     }
     public class VH extends RecyclerView.ViewHolder{
         ImageView iv;

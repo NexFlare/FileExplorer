@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "path";
     ArrayList<String> filearr;
-    RecyclerView rv;
+    RecyclerView recyclerView;
     String path;
     FileAdapter fileAdapter;
     @Override
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         filearr=new ArrayList<>();
-        rv= (RecyclerView) findViewById(R.id.rv);
+        recyclerView = (RecyclerView) findViewById(R.id.rv);
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED&&
                 ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
             if(ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)&&
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         else{
             populatefile("");
             fileAdapter=new FileAdapter();
-            rv.setLayoutManager(new LinearLayoutManager(this));
-            rv.setAdapter(fileAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(fileAdapter);
         }
 
     }
@@ -132,11 +132,11 @@ public class MainActivity extends AppCompatActivity {
             if(check==2){
                 populatefile("");
                 fileAdapter=new FileAdapter();
-                rv.setLayoutManager(new LinearLayoutManager(this));
-                rv.setAdapter(fileAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                recyclerView.setAdapter(fileAdapter);
             }
             else{
-                finish();
+                finish();//To finish the activity if permission not given
             }
         }
 
